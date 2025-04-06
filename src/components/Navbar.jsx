@@ -23,8 +23,8 @@ const Navbar = () => {
           <a href="#projects" className="nav-item">Projects</a>
           <a href="#contact" className="nav-item">Contact</a>
           <a 
-            href="/path-to-your-resume.pdf" 
-            className="nav-item resume-btn"
+            href="https://drive.google.com/file/d/12FCqH6GbPBfaozUzCKvPFG46s3UeHvs9/view?usp=drive_link"
+            className="resume-btn"
             target="_blank"
             rel="noopener noreferrer"
           >

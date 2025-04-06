@@ -12,6 +12,27 @@ const Home = () => {
             <h2 className="role">Software Developer</h2>
             <p className="subtitle">Full Stack Developer | Creative Coder | Problem Solver</p>
           </div>
+
+          {/* Add social links here */}
+          <div className="social-links">
+            <a 
+              href="https://www.instagram.com/lomash_.71/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/lomash-gupta-060668260/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+
           <div className="cta-buttons">
             <a href="#projects" className="primary-btn">View My Work</a>
             <a href="#contact" className="secondary-btn">Contact Me</a>

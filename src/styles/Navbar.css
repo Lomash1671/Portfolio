@@ -65,20 +65,19 @@
 }
 
 .resume-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border: 1px solid var(--nav-text);
   border-radius: 4px;
   color: var(--nav-text);
-  background: transparent;
-  font-size: 0.9rem;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .resume-btn:hover {
   background: var(--nav-hover);
-  color: var(--nav-background);
-  border-color: var(--nav-hover);
+  color: var(--nav-text);
+  transform: translateY(-2px);
 }
 
 .menu-btn {
