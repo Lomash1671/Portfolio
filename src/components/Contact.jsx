@@ -6,10 +6,10 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    phone: '',    // Added phone field
-    comments: ''  // Renamed from message to comments to match Google Form
+    phone: '',
+    message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, ] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,41 +18,22 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    const googleFormUrl = 'https://docs.google.com/forms/d/16Rz8zgoBmi7jqlz2uTml7DdoKYOs3-Zcsz_uIUkOe7M/formResponse';
+    // Handle form submission here
+    console.log('Form submitted:', formData);
     
-    try {
-      const formResponse = await fetch(googleFormUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-          'entry.name': formData.name,     // Replace with actual entry ID
-          'entry.email': formData.email,    // Replace with actual entry ID
-          'entry.subject': formData.subject,  // Replace with actual entry ID
-          'entry.phone': formData.phone,    // Replace with actual entry ID
-          'entry.comments': formData.comments  // Replace with actual entry ID
-        })
-      });
-
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        phone: '',
-        comments: ''
-      });
-      alert('Message sent successfully!');
-    } catch (error) {
-      alert('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Clear form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      phone: '',
+      message: ''
+    });
+    
+    // Show success message
+    alert('Thank you for your message!');
   };
 
   return (
@@ -63,6 +44,16 @@ const Contact = () => {
           <div className="contact-info">
             <h3>Let's Talk</h3>
             <p>Feel free to reach out for collaborations or just a friendly hello</p>
+            
+            <a 
+              href="https://docs.google.com/forms/d/16Rz8zgoBmi7jqlz2uTml7DdoKYOs3-Zcsz_uIUkOe7M/edit" 
+              className="google-form-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-google"></i>
+              Fill Google Form
+            </a>
             
             <div className="contact-details">
               <div className="contact-item">
@@ -137,11 +128,11 @@ const Contact = () => {
             </div>
             <div className="form-group">
               <textarea
-                name="comments"
-                value={formData.comments}
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
                 required
-                placeholder="Comments"
+                placeholder="Your Message"
                 rows="6"
               ></textarea>
             </div>
