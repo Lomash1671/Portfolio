@@ -2,27 +2,18 @@ import React, { useState, useEffect } from 'react';
 import '../styles/DarkModeToggle.css';
 
 const DarkModeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
 
   useEffect(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (prefersDark) {
-      setIsDark(true);
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  }, []);
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
 
   const toggleTheme = () => {
-    const newTheme = isDark ? 'light' : 'dark';
     setIsDark(!isDark);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   return (
@@ -31,15 +22,7 @@ const DarkModeToggle = () => {
       onClick={toggleTheme}
       aria-label="Toggle dark mode"
     >
-      <div className="toggle-wrapper">
-        <div className="toggle-background">
-          <div className="icons">
-            <span className="sun">🌞</span>
-            <span className="moon">🌙</span>
-          </div>
-          <div className={`toggle-circle ${isDark ? 'dark' : ''}`}></div>
-        </div>
-      </div>
+      {isDark ? '🌙' : '☀️'}
     </button>
   );
 };

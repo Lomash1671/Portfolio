@@ -2,11 +2,20 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   border: none;
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--text-primary);
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
   z-index: 1000;
-  padding: 0;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }
 
 .toggle-wrapper {

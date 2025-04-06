@@ -6,9 +6,9 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    phone: '',    // Added phone field
+    comments: ''  // Renamed from message to comments to match Google Form
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -21,20 +21,38 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const googleFormUrl = 'https://docs.google.com/forms/d/16Rz8zgoBmi7jqlz2uTml7DdoKYOs3-Zcsz_uIUkOe7M/formResponse';
     
-    // Add your form submission logic here
-    // Example: API call to your backend
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const formResponse = await fetch(googleFormUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          'entry.name': formData.name,     // Replace with actual entry ID
+          'entry.email': formData.email,    // Replace with actual entry ID
+          'entry.subject': formData.subject,  // Replace with actual entry ID
+          'entry.phone': formData.phone,    // Replace with actual entry ID
+          'entry.comments': formData.comments  // Replace with actual entry ID
+        })
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        phone: '',
+        comments: ''
+      });
       alert('Message sent successfully!');
-      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Error sending message:', error);
-      alert('Failed to send message. Please try again.');
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitting(false);
   };
 
   return (
@@ -49,11 +67,11 @@ const Contact = () => {
             <div className="contact-details">
               <div className="contact-item">
                 <i className="fas fa-envelope"></i>
-                <a href="mailto:your.email@example.com">lomash1671@gmail.com</a>
+                <a href="mailto:lomash1671@gmail.com">lomash1671@gmail.com</a>
               </div>
               <div className="contact-item">
                 <i className="fas fa-phone"></i>
-                <a href="tel:+1234567890">+91 9797691071</a>
+                <a href="tel:+919797691071">+91 9797691071</a>
               </div>
               <div className="contact-item">
                 <i className="fas fa-map-marker-alt"></i>
@@ -106,12 +124,24 @@ const Contact = () => {
               />
             </div>
             <div className="form-group">
-              <textarea
-                name="message"
-                value={formData.message}
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
                 required
-                placeholder="Your Message"
+                placeholder="Phone Number"
+                pattern="[0-9]{10}"
+                title="Please enter a valid 10-digit phone number"
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                name="comments"
+                value={formData.comments}
+                onChange={handleChange}
+                required
+                placeholder="Comments"
                 rows="6"
               ></textarea>
             </div>

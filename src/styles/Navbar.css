@@ -6,14 +6,14 @@
   z-index: 1000;
   padding: 1rem 0;
   transition: all 0.3s ease;
-  background: transparent;
+  background: var(--nav-background);
 }
 
 .navbar.scrolled {
-  background: rgba(10, 25, 47, 0.85);
+  background: var(--nav-background);
   backdrop-filter: blur(10px);
   padding: 0.8rem 0;
-  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -21,34 +21,22 @@
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Changed to align items to the right */
   align-items: center;
-}
-
-.logo {
-  text-decoration: none;
-  position: relative;
-  z-index: 2;
-}
-
-.logo-text {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #64ffda;
-  font-family: 'Fira Code', monospace;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;
+  justify-content: flex-start; /* Aligns items to the left */
 }
 
 .nav-item {
-  color: #ccd6f6;
+  color: var(--nav-text);
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600; /* Increased weight for better visibility */
   padding: 0.5rem;
   position: relative;
   transition: color 0.3s ease;
@@ -61,14 +49,14 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #64ffda;
+  background-color: var(--nav-accent);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
 }
 
 .nav-item:hover {
-  color: #64ffda;
+  color: var(--nav-hover);
 }
 
 .nav-item:hover::before {
@@ -77,10 +65,10 @@
 }
 
 .resume-btn {
-  padding: 0.75rem 1rem;
-  border: 1.5px solid #64ffda;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--nav-text);
   border-radius: 4px;
-  color: #64ffda;
+  color: var(--nav-text);
   background: transparent;
   font-size: 0.9rem;
   text-decoration: none;
@@ -88,8 +76,9 @@
 }
 
 .resume-btn:hover {
-  background: rgba(100, 255, 218, 0.1);
-  transform: translateY(-3px);
+  background: var(--nav-hover);
+  color: var(--nav-background);
+  border-color: var(--nav-hover);
 }
 
 .menu-btn {
@@ -108,7 +97,7 @@
 .menu-btn span {
   width: 100%;
   height: 2px;
-  background: #64ffda;
+  background: var(--nav-text);
   transition: all 0.3s ease;
 }
 
@@ -120,15 +109,20 @@
   .nav-links {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 0; /* Changed back to right for mobile menu */
     height: 100vh;
     width: min(75vw, 400px);
     flex-direction: column;
     justify-content: center;
-    background: rgba(10, 25, 47, 0.95);
+    background: var(--nav-background);
+    backdrop-filter: blur(10px);
     padding: 2rem;
-    transform: translateX(100%);
+    transform: translateX(100%); /* Changed for right-side slide in */
     transition: transform 0.3s ease;
+  }
+
+  .nav-container {
+    justify-content: flex-end; /* Keep the hamburger menu on the right */
   }
 
   .nav-links.active {
@@ -145,6 +139,10 @@
 
   .menu-btn.open span:last-child {
     transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .nav-item {
+    color: var(--nav-text);
   }
 }
 

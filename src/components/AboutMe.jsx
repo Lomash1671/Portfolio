@@ -1,9 +1,10 @@
 import React from 'react';
+import profilePic from '../assets/a.jpg'; // Update with your actual image filename
 import '../styles/AboutMe.css';
 
 const AboutMe = () => {
   const skills = {
-    frontend: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'TypeScript', 'Tailwind CSS'],
+    frontend: ['HTML', 'CSS', 'JavaScript', 'React.js', 'TypeScript', 'Tailwind CSS'],
     backend: ['Node.js', 'Express.js', 'Python', 'MongoDB', 'PostgreSQL'],
     tools: ['Git', 'GitHub', 'VS Code', 'Docker', 'Figma', 'Postman']
   };
@@ -16,8 +17,8 @@ const AboutMe = () => {
         <div className="about-content">
           <div className="about-image">
             <img 
-              src="/path-to-your-profile-image.jpg" 
-              alt="Professional headshot" 
+              src={profilePic}
+              alt="Lomash Gupta" 
               className="profile-image"
             />
           </div>
@@ -68,15 +69,21 @@ const AboutMe = () => {
             <div className="education-section">
               <h3>Education</h3>
               <div className="education-item">
-                <h4>Bachlors in Computer Science </h4>
-                <p>Model Institute of Education and Technology, Jammu</p>
-                <p>3 year</p>
+                <h4>Bachelor of Technology in Computer Science and Engineering</h4>
+                <p>Model Institute of Engineering and Technology, Jammu</p>
+                <p>2022 - Present</p>
+              </div>
+              
+              <div className="education-item">
+                <h4>Senior Secondary (XII), Science</h4>
+                <p>Little Flower Higher Secondary School, Jammu</p>
+                <p>Completed June 2022</p>
               </div>
             </div>
 
             <div className="cta-buttons">
               <a 
-                href="/path-to-your-resume.pdf" 
+                href="https://drive.google.com/file/d/12FCqH6GbPBfaozUzCKvPFG46s3UeHvs9/view?usp=drive_link" 
                 className="resume-button"
                 target="_blank"
                 rel="noopener noreferrer"

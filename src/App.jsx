@@ -27,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <DarkModeToggle />
       <Home />
       <AboutMe />
       <Projects />

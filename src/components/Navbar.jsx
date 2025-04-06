@@ -24,7 +24,7 @@ const Navbar = () => {
           <a href="#contact" className="nav-item">Contact</a>
           <a 
             href="/path-to-your-resume.pdf" 
-            className="resume-btn"
+            className="nav-item resume-btn"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -52,29 +52,35 @@
 
 .about-image {
   position: relative;
-  border-radius: 20px;
+  max-width: 300px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .profile-image {
   width: 100%;
   height: auto;
-  transform: scale(1);
-  transition: transform 0.5s ease;
-}
-
-.about-image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid #64ffda;
-  border-radius: 20px;
-  transform: translate(15px, 15px);
+  display: block;
+  border-radius: 10px;
   transition: transform 0.3s ease;
 }
 
-.about-image:hover::before {
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
   transform: translate(10px, 10px);
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover .profile-image {
+  transform: scale(1.05);
+}
+
+.about-image:hover::after {
+  transform: translate(5px, 5px);
 }
 
 .about-text {
@@ -175,6 +181,26 @@
 
 .education-item {
   margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-item h4 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-item p {
+  color: var(--text-secondary);
+  margin: 0.25rem 0;
 }
 
 .education-item h4 {
