@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Home.css';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Home = () => {
   return (
@@ -21,7 +22,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="social-link"
             >
-              <i className="fab fa-instagram"></i>
+              <FaInstagram />
             </a>
             <a 
               href="https://www.linkedin.com/in/lomash-gupta-060668260/" 
@@ -29,7 +30,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="social-link"
             >
-              <i className="fab fa-linkedin-in"></i>
+              <FaLinkedinIn />
             </a>
           </div>
 

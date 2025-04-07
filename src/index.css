@@ -27,16 +27,16 @@
 
 [data-theme='dark'] {
   /* Dark theme */
-  --background: #1a1f2c;
+  --background: #0a192f;  /* Darker navy blue */
   --text-primary: #e6f1ff;
   --text-secondary: #8892b0;
-  --accent: #00e5ff;  /* Brighter cyan for dark mode */
-  --nav-text: #dfe6e9;
-  --nav-background: rgba(26, 31, 44, 0.95);
-  --nav-hover: #80deea;  /* Mid-tone cyan */
-  --nav-accent: #00e5ff;
-  --gradient-start: #141923;
-  --gradient-end: #1a1f2c;
+  --accent: #64ffda;  /* Teal accent */
+  --nav-text: #ccd6f6;
+  --nav-background: rgba(10, 25, 47, 0.95);
+  --nav-hover: #64ffda;
+  --nav-accent: #64ffda;
+  --gradient-start: #0a192f;
+  --gradient-end: #112240;  /* Slightly lighter navy */
 }
 
 a {
